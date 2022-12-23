@@ -10,7 +10,12 @@ app.use(express.json());
 require("./db/conn");
 const auth = require("./auth");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use("/", auth);
 const PORT = process.env.PORT || 5000;
 
