@@ -12,7 +12,7 @@ const auth = require("./auth");
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://handbook-ur38.onrender.com",
     credentials: true,
   })
 );

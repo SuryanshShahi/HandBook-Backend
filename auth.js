@@ -75,7 +75,7 @@ router.get("/users", authenticate, (req, res) => {
   // });
   res.send(req.rootUser);
 });
-router.get("/logout", authenticate, (req, res) => {
+router.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("User Logged Out !");
 });
