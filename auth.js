@@ -7,6 +7,8 @@ const authenticate = require("./middleware/authenticate");
 require("./db/conn");
 const User = require("./model/userSchema");
 
+// var nodemailer = require("nodemailer");
+
 router.post("/signup1", async (req, res) => {
   const { fname, lname, email, mobile, password, cpassword } = req.body;
   if (!fname || !lname || !email || !mobile || !password || !cpassword) {
@@ -75,7 +77,7 @@ router.get("/users", authenticate, (req, res) => {
   // });
   res.send(req.rootUser);
 });
-router.get("/logout", (req, res) => {
+router.get("/logout", authenticate, (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("User Logged Out !");
 });
