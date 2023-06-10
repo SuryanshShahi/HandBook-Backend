@@ -77,8 +77,17 @@ router.get("/users", authenticate, (req, res) => {
   // });
   res.send(req.rootUser);
 });
+router.get("/payments", (req, res) => {
+  // User.find().then((data) => {
+  //   res.status(201).json(data);
+  // });
+  res.send(req);
+  // console.log(res.send(req));
+});
 router.get("/logout", authenticate, (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("User Logged Out !");
 });
 module.exports = router;
+
+// mongodb+srv://handbook:suryansh%405476@cluster0.k6fybz6.mongodb.net/handbook?retryWrites=true&w=majority
