@@ -6,6 +6,7 @@ const authenticate = require("./middleware/authenticate");
 
 require("./db/conn");
 const User = require("./model/userSchema");
+const Payment = require("./model/paymentSchema");
 
 // var nodemailer = require("nodemailer");
 
@@ -77,12 +78,10 @@ router.get("/users", authenticate, (req, res) => {
   // });
   res.send(req.rootUser);
 });
-router.get("/payments", (req, res) => {
-  // User.find().then((data) => {
-  //   res.status(201).json(data);
-  // });
-  res.send(req);
-  // console.log(res.send(req));
+router.get("/payments", async (req, res) => {
+  const mydata = await Payment.find({});
+
+  res.status(200).json({ mydata });
 });
 router.get("/logout", authenticate, (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
